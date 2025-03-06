@@ -1,0 +1,10 @@
+[package]
+name = "calculator"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+eframe = "0.31.0"
+egui = "0.31.0"
+meval = "0.2.0"
+nom = "8.0.0"

@@ -1,0 +1,63 @@
+# Rust 编译输出目录（所有子项目的 target/ 目录都会被忽略）
+target/
+
+# Cargo 相关
+**/Cargo.lock  # 如果是开发 Rust 库，建议忽略 Cargo.lock
+.cargo/
+.cargo-lock   # 旧版 Cargo.lock 文件
+
+# 编译缓存
+debug/
+release/
+
+# Rust 生成的 `*.rs.bk` 备份文件
+*.rs.bk
+
+# Rust 交叉编译产生的 `.rlib` 静态库文件
+*.rlib
+
+# Rust 文档生成目录
+/target/doc/
+
+# IDE/编辑器配置文件
+.idea/          # JetBrains IDE（如 CLion、IntelliJ Rust 插件）
+.vscode/        # VSCode
+*.code-workspace
+*.sublime-project
+*.sublime-workspace
+
+# 临时文件和 swap 文件（Vim、Emacs、VSCode）
+*.swp
+*.swo
+*~
+*.tmp
+
+# 依赖项缓存
+/.cargo/
+/node_modules/
+
+# 运行时生成的日志文件或临时文件
+*.log
+*.out
+*.err
+*.pid
+*.seed
+*.log.*
+
+# Rust 覆盖率测试工具 grcov 生成的文件
+.coverage/
+lcov.info
+
+# Rust 编译器相关
+*.d   # 依赖文件
+*.gcda # gcov 用于代码覆盖率测试的文件
+*.gcno # 代码覆盖率信息文件
+*.profraw # LLVM 的 Profile 文件
+
+# 持续集成（CI）工具可能生成的临时文件
+ci/
+dist/
+
+# MacOS/Linux/Windows 可能生成的系统文件
+.DS_Store
+Thumbs.db
