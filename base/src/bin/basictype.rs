@@ -142,6 +142,18 @@ fn complex_number() {
     println!("a / b = {}", a / b);
 }
 
+//字符类型
+fn char_type() {
+    let c = 'z';
+    let z = 'ℤ';
+    let g = '国';
+    let heart_eyed_cat = '😻';
+    println!(
+        "c = {}, z = {}, g = {}, heart_eyed_cat = {}",
+        c, z, g, heart_eyed_cat
+    )
+}
+
 fn main() {
     typename();
     yichu();
@@ -149,4 +161,5 @@ fn main() {
     bitwise();
     sequence();
     complex_number();
+    char_type();
 }
