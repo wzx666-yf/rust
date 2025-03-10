@@ -142,7 +142,7 @@ fn complex_number() {
     println!("a / b = {}", a / b);
 }
 
-//字符类型
+//字符类型 布尔类型 单元类型
 fn char_type() {
     let c = 'z';
     let z = 'ℤ';
@@ -151,7 +151,90 @@ fn char_type() {
     println!(
         "c = {}, z = {}, g = {}, heart_eyed_cat = {}",
         c, z, g, heart_eyed_cat
-    )
+    );
+
+    //Rust 的字符不仅仅是 ASCII，所有的 Unicode 值都可以作为 Rust 字符
+    println!(
+        "字符'国'占用了 {} 个字节的内存大小",
+        std::mem::size_of_val(&g)
+    );
+    //Rust 的字符只能用 '' 来表示， "" 是留给字符串的。
+
+    //布尔类型
+    //Rust 中的布尔类型有两个可能的值：true 和 false，布尔值占用内存的大小为 1 个字节
+    let _t = true;
+    let f: bool = false;
+
+    if f {
+        println!("这是一个 false");
+    }
+
+    //单元类型
+    let _unit = (); //单元类型就是 ()，完全不占用如何内存
+}
+
+//语句和表达式
+fn statement_and_expression() {
+    //语句会执行一些操作但是不会返回一个值，而表达式会在求值后返回一个值
+    //语句
+    let _a = 8;
+    let _b: Vec<u8> = Vec::new();
+    let (_a, _c) = ("hi", false);
+    // let b = (let a = 8); 这是错误的，由于 let 是语句，因此不能将 let 语句赋值给其它值
+
+    //表达式
+    let y = {
+        let x = 3;
+        x + 1 //表达式不能有分号
+    };
+    println!("y = {}", y);
+
+    fn ret_unit_type() {
+        let x = 1;
+        // if 语句块也是一个表达式，因此可以用于赋值，也可以直接返回
+        // 类似三元运算符，在Rust里我们可以这样写
+        let _y = if x % 2 == 1 { "odd" } else { "even" };
+    }
+    assert_eq!(ret_unit_type(), ());
+}
+
+//函数
+fn function() {
+    fn add(i: i32, j: i32) -> i32 {
+        i + j
+    }
+    let x = add(1, 2);
+    println!("x = {}", x);
+
+    //函数名和变量名使用蛇形命名法(snake case)，例如 fn add_two() -> {}
+    //函数的位置可以随便放，Rust 不关心我们在哪里定义了函数，只要有定义即可
+    //每个函数参数都需要标注类型
+    another_function(5, 6.1);
+    fn another_function(x: i32, y: f32) {
+        println!("x = {}, y = {}", x, y);
+    }
+    /* 错误
+    fn another_function(x: i32, y) {
+        println!("x = {}, y = {}", x, y);
+    }
+     */
+
+    //函数返回
+    fn plus_or_minus(x: i32) -> i32 {
+        if x > 5 {
+            return x - 5;
+        }
+
+        x + 5
+    }
+    let x = plus_or_minus(5);
+    println!("x = {}", x);
+
+    //永不返回的发散函数
+    //当用 ! 作函数返回类型的时候，表示该函数永不返回
+    fn _divergent() -> ! {
+        panic!("This function never returns.");
+    }
 }
 
 fn main() {
@@ -162,4 +245,6 @@ fn main() {
     sequence();
     complex_number();
     char_type();
+    statement_and_expression();
+    function();
 }
