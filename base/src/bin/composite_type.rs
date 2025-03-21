@@ -476,7 +476,17 @@ fn array() {
         }
     }
     
-    example()
+    example();
+
+    fn display_array(a: [i32; 3]) {
+        println!("{:?}", a);
+    }
+    let arr: [i32; 3] = [1, 2, 3];
+    display_array(arr);
+    let arr: [i32; 2] = [1, 2];
+    // display_array(arr); 报错，因为[i32; 3]和[i32; 2]是两个完全不同的类型
+    // 只需要将改为不可变引用即可，fn display_array(a: &[i32])
+    // display_array(&arr);
 }
 
 fn main() {
