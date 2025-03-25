@@ -109,6 +109,9 @@ fn method() {
             }
         }
     }
+    
+    let sq = Rectangle::square(3);
+    println!("{}", sq.area());
 }
 fn main() {
     method();
