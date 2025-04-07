@@ -43,6 +43,8 @@ release/
 *.pid
 *.seed
 *.log.*
+*.exe
+*.pdb
 
 # Rust 覆盖率测试工具 grcov 生成的文件
 .coverage/
